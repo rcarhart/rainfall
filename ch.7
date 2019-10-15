@@ -1,0 +1,141 @@
+import java.util.*;
+
+public class CalculateRainfall
+{
+   public static void main(String[] args)
+   {
+      //set and intialize vairables
+      
+      String[] months = {"January", "February", "March","April","May","June","July","August","September","October","November","December"};
+      double[] rainfall = new double[months.length];
+
+      Rainfall amazon = new Rainfall();
+      
+      //scanner to get user input
+      Scanner scanner = new Scanner(System.in);
+      
+      //for loop to iterate through the months to get user input of rainfall each month
+      for(int i = 0; i<rainfall.length; i++)
+      {
+      System.out.println("How much rainfall did you recieve, in inches, for the month of: " + months[i]);
+      rainfall[i] = scanner.nextDouble();
+      
+         //while statement to reject negative numbers
+         
+         while(rainfall[i] < 0)
+         {
+            System.out.println("You can not enter a negative number");
+            System.out.println("How much rainfall did you recieve for the month of: " + months[i]);
+            rainfall[i] = scanner.nextDouble();  
+         }
+      }
+      
+      System.out.println("total rainfall: " + amazon.getTotalRainfall(rainfall) + " average Rainfall: " + amazon.getAverageRainfall(rainfall) + " min: " + amazon.getMinRainfall(rainfall) + 
+      " max: " + amazon.getMaxRainfall(rainfall));
+
+   }
+
+}
+
+public class Rainfall
+{
+   private int months = 12;
+   private double [] rainfall = new double[months];
+   private double totalRainfall = 0;
+   
+   public Rainfall(){}
+ 
+         
+         public void getMaxRainfall()
+         {
+            double max = rainfall[0];
+               
+            for(int i = 1; i < rainfall.length; i++)
+             if(rainfall[i] > max)
+               {
+                  max = rainfall[i];
+               }
+          }
+          
+          public void getMinRainfall()
+          {
+            double min = rainfall[0];
+            for(double rain : rainfall)
+            {
+               if(rain < min)
+               {
+                  min = rain;
+               }
+            }
+          }
+          
+          public double getTotalRainfall(double[] rainfall)
+          {
+            for(double rain : rainfall)
+            {
+            totalRainfall = rain + totalRainfall;
+            }
+            return totalRainfall;
+          }
+          
+          public double getAverageRainfall(double[] rainfall)
+          {
+            double averageRainfall = 0;
+            for(double rain : rainfall)
+            {
+            totalRainfall = rain + totalRainfall;
+            averageRainfall = totalRainfall / months;
+            } 
+            return averageRainfall;         
+          }
+          
+          public double getMaxRainfall(double[] rainfall)
+          {
+            double max = rainfall[0];
+                  for(int i = 1; i < rainfall.length; i++)
+                     if(rainfall[i] > max)
+                        {
+                         max = rainfall[i];
+                        }
+                  return max;
+         }      
+         public double getMinRainfall(double[] rainfall)
+         {
+            double min = rainfall[0];
+              for(int i = 1; i < rainfall.length; i++)
+               if(rainfall[i] < min)
+                  {
+                     min = rainfall[i];
+                  }
+            return min;
+         }
+  
+  
+  
+  public int getHighestMonth() {
+
+    int highest = 0;
+
+    // Find the element with the highest value.
+    for (int i = 1; i < rain.length; i++) {
+        if (rain[i] > rain[highest])
+            highest = i;
+    }
+
+    // Return the element number.
+    return highest;
+}
+
+public int getLowestMonth() {
+    int lowest = 0;
+
+    // Find the element with the lowest value.
+    for (int i = 1; i < rain.length; i++) {
+        if (rain[i] < rain[lowest])
+            lowest = i;
+    }
+    // Return the element number.
+    return lowest;
+}
+      
+}
